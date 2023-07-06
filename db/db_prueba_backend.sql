@@ -70,3 +70,41 @@ CREATE TABLE historiales(
     updated_at TIMESTAMP COMMENT'Tiempo de actualizacion',
     deleted_at TIMESTAMP COMMENT'Tiempo de eliminacion'
 );
+
+/*Creacion de las relaciones entre la tabla productos con user*/
+
+ALTER TABLE productos ADD CONSTRAINT  productos_users_fk FOREIGN KEY(created_by) REFERENCES users(id);
+ALTER TABLE productos ADD CONSTRAINT  productosU_users_fk FOREIGN KEY(update_by) REFERENCES users(id);
+
+/*Creacion de las relaciones entre la tabla bodegas con user*/
+
+ALTER TABLE bodegas ADD CONSTRAINT  bodegasI_users_fk FOREIGN KEY(id_responsable) REFERENCES users(id);
+ALTER TABLE bodegas ADD CONSTRAINT  bodegasC_users_fk FOREIGN KEY(created_by) REFERENCES users(id);
+ALTER TABLE bodegas ADD CONSTRAINT  bodegasU_users_fk FOREIGN KEY(update_by) REFERENCES users(id);
+
+/*Creacion de las relaciones entre la tabla inventarios con user*/
+
+ALTER TABLE inventarios ADD CONSTRAINT  inventariosC_users_fk FOREIGN KEY(created_by) REFERENCES users(id);
+ALTER TABLE inventarios ADD CONSTRAINT  inventariosU_users_fk FOREIGN KEY(update_by) REFERENCES users(id);
+
+/*Creacion de las relaciones entre la tabla historiales con user*/
+
+ALTER TABLE historiales ADD CONSTRAINT  historialesC_users_fk FOREIGN KEY(created_by) REFERENCES users(id);
+ALTER TABLE historiales ADD CONSTRAINT  historialesU_users_fk FOREIGN KEY(update_by) REFERENCES users(id);
+
+/*Creacion de las relaciones entre la tabla inventarios con productos*/
+
+ALTER TABLE inventarios ADD CONSTRAINT  inventariosI_productos_fk FOREIGN KEY(id_producto) REFERENCES productos(id);
+
+/*Creacion de las relaciones entre la tabla inventarios con bodegas*/
+
+ALTER TABLE inventarios ADD CONSTRAINT  inventariosI_bodegas_fk FOREIGN KEY(id_bodega) REFERENCES bodegas(id);
+
+/*Creacion de las relaciones entre la tabla historiales con bodegas*/
+
+ALTER TABLE historiales ADD CONSTRAINT  historialesIO_bodegas_fk FOREIGN KEY(id_bodega_origen) REFERENCES bodegas(id);
+ALTER TABLE historiales ADD CONSTRAINT  historialesID_bodegas_fk FOREIGN KEY(id_bodega_destino) REFERENCES bodegas(id);
+
+/*Creacion de las relaciones entre la tabla historiales con productos*/
+
+ALTER TABLE historiales ADD CONSTRAINT  historialesII_productos_fk FOREIGN KEY(id_inventario) REFERENCES productos(id);
