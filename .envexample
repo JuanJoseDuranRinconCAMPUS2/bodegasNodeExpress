@@ -1,0 +1,2 @@
+MY_CONFIG={"hostname": "", "port":}
+MY_CONNECT={"host":"", "user":"", "database": "", "password": "", "port" : }
