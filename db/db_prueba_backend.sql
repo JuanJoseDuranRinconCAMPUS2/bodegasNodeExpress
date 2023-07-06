@@ -48,8 +48,8 @@ CREATE TABLE bodegas(
 /*Creacion de la tabla Inventarios*/
 CREATE TABLE inventarios(
     id BIGINT(20) UNSIGNED PRIMARY KEY COMMENT'Identificador del inventario',
-    id_bodega BIGINT(20) UNSIGNED UNIQUE COMMENT'id de la bodega',
-    id_producto BIGINT(20) UNSIGNED UNIQUE COMMENT'id del producto',
+    id_bodega BIGINT(20) UNSIGNED  COMMENT'id de la bodega',
+    id_producto BIGINT(20) UNSIGNED  COMMENT'id del producto',
     cantidad INT(11) COMMENT'Cantidad del producto en el inventario',
     created_by BIGINT(20) UNSIGNED COMMENT'Creado por',
     update_by BIGINT(20) UNSIGNED COMMENT'Actualizado por',
@@ -108,3 +108,5 @@ ALTER TABLE historiales ADD CONSTRAINT  historialesID_bodegas_fk FOREIGN KEY(id_
 /*Creacion de las relaciones entre la tabla historiales con productos*/
 
 ALTER TABLE historiales ADD CONSTRAINT  historialesII_productos_fk FOREIGN KEY(id_inventario) REFERENCES productos(id);
+
+
