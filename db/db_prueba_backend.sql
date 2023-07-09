@@ -8,7 +8,7 @@ USE db_prueba_backend_sql;
 
 /*Creacion de la tabla Users*/
 CREATE TABLE users(
-    id BIGINT(20) UNSIGNED PRIMARY KEY COMMENT'Identificador del usuario',
+    id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT'Identificador del usuario',
     nombre VARCHAR(255) COMMENT'Nombre del usuario',
     email VARCHAR(255) UNIQUE COMMENT'Email del usuario',
     email_verified_at TIMESTAMP COMMENT'Tiempo de verificacion',
@@ -23,7 +23,7 @@ CREATE TABLE users(
 );
 /*Creacion de la tabla Producto*/
 CREATE TABLE productos(
-    id BIGINT(20) UNSIGNED PRIMARY KEY COMMENT'Identificador del producto',
+    id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT'Identificador del producto',
     nombre VARCHAR(255) COMMENT'Nombre del producto',
     descripcion VARCHAR(255) COMMENT'Email del usuario',
     estado TINYINT(4) COMMENT'Estado del producto',
@@ -35,7 +35,7 @@ CREATE TABLE productos(
 );
 /*Creacion de la tabla Bodegas*/
 CREATE TABLE bodegas(
-    id BIGINT(20) UNSIGNED PRIMARY KEY COMMENT'Identificador de la bodega',
+    id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT'Identificador de la bodega',
     nombre VARCHAR(255) COMMENT'Nombre de la bodega',
     id_responsable BIGINT(20) UNSIGNED COMMENT'identificador del responsable',
     estado TINYINT(4) COMMENT'Estado de la bodega',
@@ -47,7 +47,7 @@ CREATE TABLE bodegas(
 );
 /*Creacion de la tabla Inventarios*/
 CREATE TABLE inventarios(
-    id BIGINT(20) UNSIGNED PRIMARY KEY COMMENT'Identificador del inventario',
+    id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT'Identificador del inventario',
     id_bodega BIGINT(20) UNSIGNED  COMMENT'id de la bodega',
     id_producto BIGINT(20) UNSIGNED  COMMENT'id del producto',
     cantidad INT(11) COMMENT'Cantidad del producto en el inventario',
@@ -59,7 +59,7 @@ CREATE TABLE inventarios(
 );
 /*Creacion de la tabla historiales*/
 CREATE TABLE historiales(
-    id BIGINT(20) UNSIGNED PRIMARY KEY COMMENT'Identificador del historial',
+    id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT'Identificador del historial',
     cantidad INT(11) COMMENT'Cantidad en el historial',
     id_bodega_origen BIGINT(20) UNSIGNED  COMMENT'id de la bodega',
     id_bodega_destino BIGINT(20) UNSIGNED  COMMENT'id de la bodega',
