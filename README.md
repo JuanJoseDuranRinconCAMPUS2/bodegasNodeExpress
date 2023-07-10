@@ -98,7 +98,7 @@ Accede a la API utilizando las siguientes rutas:
 
 **Estructura**
 
-`http://127.8.8.7:5008/postBodegas?id=""&nombre=""&id_responsable=""&estado=""&created_by=""&update_by=""&created_at=""&updated_at=""&deleted_at=""`
+`http://127.8.8.7:5008/postBodegas?&nombre=""&id_responsable=""&estado=""&created_by=""&update_by=""&created_at=""&updated_at=""&deleted_at=""`
 
 Para usar el end Point, debes borrar los " " y reemplazarlos por la data en cuestión.
 
