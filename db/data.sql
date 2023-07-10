@@ -41,8 +41,8 @@ INSERT INTO `historiales` (`id`, `cantidad`, `id_bodega_origen`, `id_bodega_dest
 (25, 25, 19, 26, 41, NULL, NULL, '2022-06-03 03:28:27', '2022-06-03 03:28:27', NULL),
 (26, 300, 18, 12, 42, NULL, NULL, '2022-06-03 03:51:23', '2022-06-03 03:51:23', NULL),
 (27, 300, 18, 12, 42, NULL, NULL, '2022-06-03 03:51:35', '2022-06-03 03:51:35', NULL),
-(28, 1, 12, 11, 60, NULL, NULL, '2022-07-11 22:17:10', '2022-07-11 22:17:10', NULL),
-(29, 200, 11, 12, 57, 11, NULL, '2022-07-21 21:24:15', '2022-07-21 21:24:15', NULL);
+(28, 1, 12, 11, 67, NULL, NULL, '2022-07-11 22:17:10', '2022-07-11 22:17:10', NULL),
+(29, 200, 11, 12, 75, 11, NULL, '2022-07-21 21:24:15', '2022-07-21 21:24:15', NULL);
 
 INSERT INTO `inventarios` (`id`, `id_bodega`, `id_producto`, `cantidad`, `created_by`, `update_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (12, 12, 18, 103, 11, NULL, NULL, '2023-05-26 01:35:52', NULL),

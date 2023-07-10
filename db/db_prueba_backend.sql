@@ -105,8 +105,9 @@ ALTER TABLE inventarios ADD CONSTRAINT  inventariosI_bodegas_fk FOREIGN KEY(id_b
 ALTER TABLE historiales ADD CONSTRAINT  historialesIO_bodegas_fk FOREIGN KEY(id_bodega_origen) REFERENCES bodegas(id);
 ALTER TABLE historiales ADD CONSTRAINT  historialesID_bodegas_fk FOREIGN KEY(id_bodega_destino) REFERENCES bodegas(id);
 
-/*Creacion de las relaciones entre la tabla historiales con productos*/
+/*Creacion de las relaciones entre la tabla historiales con inventarios*/
 
-ALTER TABLE historiales ADD CONSTRAINT  historialesII_productos_fk FOREIGN KEY(id_inventario) REFERENCES productos(id);
+ALTER TABLE historiales ADD CONSTRAINT  historialesI_inventarios_fk FOREIGN KEY(id_inventario) REFERENCES inventarios(id);
+
 
 
