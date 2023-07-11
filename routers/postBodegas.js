@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
+import 'reflect-metadata';
+import { plainToClass } from "class-transformer";
 import {Router} from 'express';
 const storagePostBodegas = Router();
 dotenv.config();
