@@ -13,13 +13,14 @@ postBodegas.use((req,res,next)=>{
 // Para usar esta funcion crea una solicitud POST a "http://127.8.8.7:5008/postBodegas/".
 // En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:
 // {
-//   "nombre": "Bodega san jorge",
-//   "id_responsable": 14,
-//   "estado": 1,
-//   "created_by": 18,
-//   "update_by": 18
+//   "id" : 66,
+//   "nombre": "un pc gamer",
+//   "descripcion" : "un pc gamer con maincra instalado",
+//   "estado" : 1,
+//   "created_by" : 15,
+//   "update_by" : 18
 // }
-// Recuerda pudes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data en este ejemplo de json y ademas id_responsable, created_by yupdate_by son datos foraneos
+// Recuerda pudes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data en este ejemplo de json y ademas created_by yupdate_by son datos foraneos
  postBodegas.post('/', proxyPBodegas,(req,res)=>{
     const {name_B, identifaction_R, status, created_B, update_B} = req.body;
     con.query(
@@ -33,7 +34,7 @@ postBodegas.use((req,res,next)=>{
         ],
         (err,data,fil)=>{
             if (err) {
-                return res.status(500).send('Error al guardar los datos');
+                return res.status(500).send(`Error al guardar los datos de bodega \n Error encontrado: ${err.sqlMessage}`);
               }
               res.status(200).send('Datos guardados correctamente');
         }
