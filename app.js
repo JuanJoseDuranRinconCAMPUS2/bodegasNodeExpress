@@ -9,6 +9,7 @@ import postTransladarInv from './routers/postTransladarInv.js';
 console.clear();
 dotenv.config();
 const appExpress = express();
+appExpress.use(express.json());
 appExpress.use("/getBodegas", storageBodegas);
 appExpress.use("/postBodegas", postBodegas);
 appExpress.use("/getProductosT", storageGetProductosT);
