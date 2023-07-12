@@ -10,10 +10,14 @@ postInventarios.use((req,res,next)=>{
     con = mysql.createPool(myconfig);
     next();
 })
- // http://127.8.8.7:5008/postInventarios?id_producto=""&id_bodega=""&cantidad=""
- //↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	
- //Para ejecutar este endpoint copia la url de arriba y cambia los espacios en blanco por la data correspondiente (recuerda borrar los " "). recuerda que el id debe ser un numero unico que no este en la tabla principal
- // y los valores id_producto, id_bodega son datos forreanos de la tabla producto y bodega
+ // Para usar esta funcion crea una solicitud POST a "http://127.8.8.7:5008/postInventarios".
+// En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:
+// {
+//   "id_producto" : 20,
+//   "id_bodega" : 11,
+//   "cantidad" : 50
+// }
+// Recuerda pudes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data en este ejemplo de json y ademas id_producto y id_bodega son datos foraneos
  postInventarios.post('/', proxyPInventarios, (req,res)=>{
     const {identifaction_B, identifaction_P, amount} = req.body;
     con.query(
