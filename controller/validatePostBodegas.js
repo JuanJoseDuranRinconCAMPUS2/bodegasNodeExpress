@@ -9,8 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Expose, Transform } from "class-transformer";
 export class validatePBodegas {
-    constructor(Identification, name_B, identifaction_R, status, created_B, update_B) {
-        this.Identification = Identification;
+    constructor(name_B, identifaction_R, status, created_B, update_B) {
         this.name_B = name_B;
         this.identifaction_R = identifaction_R;
         this.status = status;
@@ -18,18 +17,6 @@ export class validatePBodegas {
         this.update_B = update_B;
     }
 }
-__decorate([
-    Expose({ name: 'id' }),
-    Transform(({ value }) => {
-        if (Math.floor(value) && typeof value === "number" && value >= 0) {
-            return Math.floor(value);
-        }
-        else {
-            throw { status: 400, message: 'El id no cumple con los parametros requeridos' };
-        }
-    }, { toClassOnly: true }),
-    __metadata("design:type", Number)
-], validatePBodegas.prototype, "Identification", void 0);
 __decorate([
     Expose({ name: 'nombre' }),
     Transform(({ value }) => {

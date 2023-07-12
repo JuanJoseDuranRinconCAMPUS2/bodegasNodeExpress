@@ -10,12 +10,18 @@ postBodegas.use((req,res,next)=>{
     con = mysql.createPool(myconfig);
     next();
 })
- // http://127.8.8.7:5008/postBodegas?id=""&nombre=""&id_responsable=""&estado=""&created_by=""&update_by=""&created_at=""&updated_at=""&deleted_at=""
- //↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	
- //Para ejecutar este endpoint copia la url de arriba y cambia los espacios en blanco por la data correspondiente. recuerda que el id debe ser un numero unico que no este en la tabla principal
- // y los valores id_responsable, created_by, update_by son datos forreanos de la tabla USERS
+// Para usar esta funcion crea una solicitud POST a "http://127.8.8.7:5008/postBodegas/".
+// En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:
+// {
+//   "nombre": "Bodega san jorge",
+//   "id_responsable": 14,
+//   "estado": 1,
+//   "created_by": 18,
+//   "update_by": 18
+// }
+// Recuerda pudes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data en este ejemplo de json y ademas id_responsable, created_by yupdate_by son datos foraneos
  postBodegas.post('/', proxyPBodegas,(req,res)=>{
-    const {Identification, name_B, identifaction_R, status, created_B, update_B} = req.body;
+    const {name_B, identifaction_R, status, created_B, update_B} = req.body;
     con.query(
         /*SQL*/`INSERT INTO bodegas(nombre, id_responsable, estado, created_by, update_by, created_at, updated_at, deleted_at) VALUES(?, ?, ?, ?, ?, CURRENT_TIMESTAMP, NULL, NULL)`,
         [

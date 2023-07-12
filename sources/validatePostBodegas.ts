@@ -1,16 +1,6 @@
 import { Expose, Type, Transform } from "class-transformer";
 
 export class validatePBodegas{
-    @Expose({ name: 'id' })
-    @Transform(({ value }) => {
-        if (Math.floor(value) && typeof value === "number" && value >= 0) {
-            return Math.floor(value);
-        } else {
-            throw { status: 400, message: 'El id no cumple con los parametros requeridos' };
-        }
-    }, { toClassOnly: true })
-    Identification: number;
-
     @Expose({ name: 'nombre' })
     @Transform(({ value }) => {
         if (/^[a-zA-Z\s]+$/.test(value))
@@ -56,8 +46,7 @@ export class validatePBodegas{
     }, { toClassOnly: true })
     update_B: number;
 
-    constructor(Identification : number, name_B : string, identifaction_R : number, status: number, created_B : number, update_B : number){
-        this.Identification = Identification;
+    constructor( name_B : string, identifaction_R : number, status: number, created_B : number, update_B : number){
         this.name_B = name_B;
         this.identifaction_R = identifaction_R;
         this.status = status;
