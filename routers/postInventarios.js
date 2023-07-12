@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
+import proxyPInventarios from '../middleware/proxyPInventarios.js';
 import {Router} from 'express';
 const postInventarios = Router();
 dotenv.config();
@@ -13,13 +14,13 @@ postInventarios.use((req,res,next)=>{
  //↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	↑	
  //Para ejecutar este endpoint copia la url de arriba y cambia los espacios en blanco por la data correspondiente (recuerda borrar los " "). recuerda que el id debe ser un numero unico que no este en la tabla principal
  // y los valores id_producto, id_bodega son datos forreanos de la tabla producto y bodega
- postInventarios.post('/', (req,res)=>{
-    const {id_bodega, id_producto, cantidad} = req.query;
+ postInventarios.post('/', proxyPInventarios, (req,res)=>{
+    const {identifaction_B, identifaction_P, amount} = req.body;
     con.query(
         /*SQL*/`
-            SELECT * FROM inventarios WHERE id_bodega = ${id_bodega} AND id_producto = ${id_producto};
+            SELECT * FROM inventarios WHERE id_bodega = ${identifaction_B} AND id_producto = ${identifaction_P};
         `,
-        (err,data,fil)=>{
+        (err,data,fil)=>{ 
             if (err) {
                 return res.status(500).send(`Error al verificar la combinacion \n Error encontrado: ${err.sqlMessage}`);
             }
@@ -28,7 +29,7 @@ postInventarios.use((req,res,next)=>{
                     con.query(
                         /*SQL*/`INSERT INTO inventarios (id_bodega, id_producto, cantidad) VALUES  (?, ?, ?);`,
                         [
-                            id_bodega, id_producto, cantidad
+                            identifaction_B, identifaction_P, amount
                         ],
                         (err,data2,fil)=>{
                             if (err) {
@@ -42,11 +43,11 @@ postInventarios.use((req,res,next)=>{
             
                 default:
                     let cantidadActual = Number(data[0].cantidad);
-                    let cantidadPlus = Number(cantidad) + cantidadActual;
+                    let cantidadPlus = Number(amount) + cantidadActual;
                     con.query(
                         /*SQL*/`UPDATE inventarios SET cantidad = ? WHERE id_bodega = ? AND id_producto = ?;`,
                         [
-                        cantidadPlus, id_bodega, id_producto
+                        cantidadPlus, identifaction_B, identifaction_P
                         ],
                         (err,data2,fil)=>{
                             if (err) {
