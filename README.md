@@ -51,7 +51,19 @@ Este proyecto tiene como objetivo realizar una prueba de contratación real de B
 
    - Mysql2
 
-     `npm i -E -D mysql2` 
+     `npm i -E -D mysql2`
+     
+   - Class-transformer
+   
+     `npm i -E -D class-transformer` 
+     
+   - Reflect-metadata
+   
+     `npm i -E -D reflect-metadata` 
+     
+   - Typescript
+   
+     `npm i -E -D typescript` 
 
 ## **🏁Configuración**🏁
 
@@ -98,13 +110,22 @@ Accede a la API utilizando las siguientes rutas:
 
 **Estructura**
 
-`http://127.8.8.7:5008/postBodegas?&nombre=""&id_responsable=""&estado=""&created_by=""&update_by=""&created_at=""&updated_at=""&deleted_at=""`
+Para usar este End Point crea una solicitud POST a http://127.8.8.7:5008/postBodegas/.
 
-Para usar el end Point, debes borrar los " " y reemplazarlos por la data en cuestión.
+**En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:**
 
-**Ejemplo de uso**
+```json
+{
+    "id" : 66, 
+    "nombre": "un pc gamer",
+    "descripcion" : "un pc gamer con maincra instalado",
+    "estado" : 1,
+    "created_by" : 15,
+    "update_by" : 18
+}
+```
 
-**http://127.8.8.7:5008/postBodegas?nombre=Bodega Por Mayor&id_responsable=11&estado=1&created_by=11&update_by=11&created_at=2022-06-02 15:33:48&updated_at=2022-06-02 15:33:48&deleted_at=2022-06-02 15:33:48**
+*Recuerda puedes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data en este ejemplo de json y además created_by y update_by son datos foráneos*
 
 ### 🏹/getProductosT🏹
 
@@ -120,13 +141,21 @@ Para usar el end Point, debes borrar los " " y reemplazarlos por la data en cues
 
 **Estructura**
 
-`http://127.8.8.7:5008/postProductosInv?id=""&nombre=""&descripcion=""&estado=""&created_by=""&update_by=""&created_at=""&updated_at&deleted_at=""`
+Para usar este End Point crea una solicitud POST a "http://127.8.8.7:5008/postProductosInv".
 
-Para usar el end Point, debes borrar los " " y reemplazarlos por la data en cuestión.
+**En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:**
 
-**Ejemplo de uso**
+```json
+{
+    "nombre": "Bodega san jorge",
+    "id_responsable": 14,
+    "estado": 1,
+    "created_by": 18,
+    "update_by": 18
+}
+```
 
-**http://127.8.8.7:5008/postProductosInv?nombre=pollo&descripcion=simplemente un pollo&estado=1&created_by=11&update_by=11&created_at=2022-06-02 15:33:48&updated_at&deleted_at**
+*Recuerda puedes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data y de estructura en este ejemplo de json y además id_responsable, created_by y update_by son datos foráneos*
 
 ### 🍁/postInventarios🍁
 
@@ -140,13 +169,21 @@ Si la inserción o actualización es exitosa, se devuelve una respuesta con el c
 
 **Estructura**
 
-`http://127.8.8.7:5008/postInventarios?id_producto=""&id_bodega=""&cantidad=""`
+Para usar este End Point crea una solicitud POST a "http://127.8.8.7:5008/postInventarios".
 
-Para usar el end Point, debes borrar los " " y reemplazarlos por la data en cuestión.
+**En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:**
 
-**Ejemplo de uso**
+```json
+{
+	"id_producto" : 20,
+ 	"id_bodega" : 11,
+ 	"cantidad" : 50
+}
+```
 
-*http://127.8.8.7:5008/postInventarios?id_producto=20&id_bodega=11&cantidad=10**
+
+
+*Recuerda puedes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data y de estructura en este ejemplo de json y además id_producto y id_bodega son datos foráneos*
 
 ### 🪷/postTransladarInv🪷
 
@@ -163,13 +200,21 @@ Además, se realiza un INSERT en la tabla de historiales con toda la informació
 
 **Estructura**
 
-`http://127.8.8.7:5008/postTransladarInv?id_bodegaOrigen=""&id_bodegaFinal=""&id_producto=""&cantidad=""`
+Para usar este End Point crea una solicitud POST a "http://127.8.8.7:5008/postTransladarInv".
 
-Para usar el end Point, debes borrar los " " y reemplazarlos por la data en cuestión.
+**En el cuerpo de la solicitud, incluye la siguiente data en formato JSON:**
 
-**Ejemplo de uso**
+```json
+{ 
+ 	"id_bodegaOrigen" : 12,
+     "id_bodegaFinal" : 11,
+     "id_producto" : 20,
+     "cantidad" : 50
+}
+```
 
-**http://127.8.8.7:5008/postTransladarInv?id_bodegaOrigen=13&id_bodegaFinal=12&id_producto=20&cantidad=100**
+
+*Recuerda puedes enviar cualquier nombre y numero positivo respetando las reglas del tipo de data y de estructura en este ejemplo de json y además id_producto , id_bodegaOrigen y id_bodegaFinal son datos foráneos*
 
 ## **🌌Contribución🌌**
 
